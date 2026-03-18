@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome to Clarity Circle</h2>
+
+<!-- POLLS -->
+<div class="card p-3 mb-4">
+<h4>Vote for Next Topic</h4>
+
+<div id="polls">
+{% for topic, votes in poll_data.items() %}
+<button class="btn btn-maroon m-1" onclick="vote('{{topic}}')">
+{{topic}} (<span id="{{topic}}">{{votes}}</span>)
+</button>
+{% endfor %}
+</div>
+</div>
+
+<!-- FAQ -->
+<div class="card p-3 mb-4">
+<h4>FAQ</h4>
+
+<div class="accordion" id="faq">
+
+<div class="accordion-item">
+<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q1">
+How do I join?
+</button>
+<div id="q1" class="accordion-collapse collapse">
+<div class="accordion-body">Sign up using the Join button.</div>
+</div>
+</div>
+
+<div class="accordion-item">
+<button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q2">
+How do I vote?
+</button>
+<div id="q2" class="accordion-collapse collapse">
+<div class="accordion-body">Click a poll option above.</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- AI -->
+<div class="card p-3">
+<h4>AI Assistant</h4>
+
+<div id="chatBox" class="chat-box"></div>
+
+<input id="msg" class="form-control mt-2">
+<button onclick="sendMessage()" class="btn btn-maroon mt-2">Send</button>
+</div>
+
+{% endblock %}
